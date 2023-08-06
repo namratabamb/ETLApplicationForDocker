@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  localstack:
+    image: localstack/localstack:latest
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=sqs
+      - DEBUG=1
+    volumes:
+      - ./localstack_data:/tmp/localstack
+
+  postgres:
+    image: custom_postgres_image:latest
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    volumes:
+      - ./localstack_data/initdb:/docker-entrypoint-initdb.d

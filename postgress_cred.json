@@ -1,0 +1,7 @@
+{
+  "db_host": "postgres_container",
+  "db_port": "5432",
+  "db_name": "login_behavior_db",
+  "db_user": "postgres_user",
+  "db_password": "postgres_password"
+}
