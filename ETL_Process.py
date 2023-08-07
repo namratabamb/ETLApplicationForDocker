@@ -34,8 +34,25 @@ connection = psycopg2.connect(
 
 
 def mask_field(field_value):
-    return hashlib.sha256(field_value.encode()).hexdigest()
+    # Check if action is encoding or decoding
+    if action == "encode":
+        # Encode string to ASCII value
+        ascii_string = field_value.encode('ascii')
 
+        # Encode ASCII string to base64
+        encoded_string = base64.b64encode(ascii_string).decode('utf-8')
+
+        # Return the encoded string
+        return encoded_string
+
+    # Else decode the encrypted string
+    elif action == "decode":
+            
+        # Decode base64 encrypted string
+        decoded_string = base64.b64decode(field_value).decode('utf-8')
+
+        # Return the decoded string
+        return decoded_string
 
 def read_message_from_sqs(queue_url):
     try:
