@@ -1,0 +1,10 @@
+Additional Information
+
+1. How will you read messages from the queue?
+Ans: I have made use of the BOTO3 library from Python to interact and read messages from AWS SQS queue.
+
+2. How will you mask the PII data so that duplicate values can be identified?
+Ans: I have made use of Base 64 encoding decoding to mask the PII data.
+
+3. What will be your strategy for connecting and writing to Postgres?
+Ans: I have made use of psycopg2 library from Python for this.
